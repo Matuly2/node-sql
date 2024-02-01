@@ -42,6 +42,12 @@ app.get('/alumnos',(req,res)=>{
     res.setHeader('Content-type','text/html');
     res.send(contenido);
 });
+app.get('/graficos',(req,res)=>{
+    var contenido=fs.readFileSync('public/graficos.html');
+    res.setHeader('Content-type','text/html');
+    res.send(contenido);
+});
+
 
 
 
@@ -142,6 +148,37 @@ app.get("/alumnosInfo", (req, res) => {
         })
     })
 });
+app.get("/graficosInfo", (req, res) => {
+    pool.getConnection((err, connection) => {
+        if(err) throw err
+        console.log('connected as id ' + connection.threadId)
+        connection.query(` SELECT
+        cu.idCurso,
+        cu.nombre AS nombreCurso,
+        COUNT(ac.idAlumno) AS totalMatriculados,
+        SUM(CASE WHEN ac.estado = 'aprobado' THEN 1 ELSE 0 END) AS aprobados,
+        (SUM(CASE WHEN ac.estado = 'aprobado' THEN 1 ELSE 0 END) / COUNT(ac.idAlumno)) * 100 AS ratioAprobados
+        FROM
+            Cursos cu
+        LEFT JOIN
+            AlumnosCursos ac ON cu.idCurso = ac.idCurso
+        GROUP BY
+            cu.idCurso, cu.nombre;
+     `, (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if (!err) {
+                res.send(rows)
+            } else {
+                console.log(err)
+            }
+
+            // if(err) throw err
+           
+        })
+    })
+});
+
 
 
 

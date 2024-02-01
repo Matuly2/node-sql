@@ -191,18 +191,48 @@ nav a:hover {
     color: #333;
 }
 
-/* Estilos para tarjetas de cursos dentro de la tarjeta de alumno */
+
 .alumno-cursos-info {
     margin-top: 10px;
 }
+.grafico-container {
+    width: 30%;
+    height: 70vh; 
+    margin: 0 auto;
+}
 
+#cursos {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+#cursos:hover {
+    border: 1px solid #4caf50;
+}
+
+
+#generarGrafico {
+    border-radius: 5px;
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+/* Efecto hover para el botón */
+#generarGrafico:hover {
+    background-color: #45a049;
+}
 @media (max-width: 768px) {
     .centro-card,
     .curso-card,
     .alumno-card {
         width: 100%;
     }
-
+    .grafico-container {
+        width: 100%;
+    }
     nav li {
         display: block;
         margin-bottom: 10px;
