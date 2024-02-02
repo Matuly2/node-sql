@@ -117,6 +117,7 @@ app.get("/alumnosInfo", (req, res) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query(`SELECT
+        a.idAlumno,
         a.nombre AS nombreAlumno,
         JSON_ARRAYAGG(
             JSON_OBJECT(
@@ -132,8 +133,6 @@ app.get("/alumnosInfo", (req, res) => {
         Cursos c ON ac.idCurso = c.idCurso
     GROUP BY
         a.idAlumno, a.nombre;
-    
-    
     `, (err, rows) => {
             connection.release() // return the connection to pool
 
@@ -165,6 +164,26 @@ app.get("/graficosInfo", (req, res) => {
         GROUP BY
             cu.idCurso, cu.nombre;
      `, (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if (!err) {
+                res.send(rows)
+            } else {
+                console.log(err)
+            }
+
+            // if(err) throw err
+           
+        })
+    })
+});
+app.get("/borrarAlumno", (req, res) => {
+    console.log("Este es el alumno.nombrealumno que mando ala bdd: ",req.query.idAlumno)
+    pool.getConnection((err, connection) => {
+        if(err) throw err
+        console.log('connected as id ' + connection.threadId)
+        connection.query(`DELETE FROM Alumnos WHERE idAlumno = '${req.query.idAlumno}'`
+     , (err, rows) => {
             connection.release() // return the connection to pool
 
             if (!err) {
