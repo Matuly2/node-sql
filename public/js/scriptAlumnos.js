@@ -112,6 +112,8 @@ function render(data) {
                             });
                             
                          
+                        }else{
+                            Swal.fire('Error', 'No se pudo eliminar al alumno. Inténtelo de nuevo más tarde.', 'error');
                         }
                     });
                 }
