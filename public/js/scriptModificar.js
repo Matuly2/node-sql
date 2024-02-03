@@ -83,7 +83,10 @@ function modificar() {
                 data: valoresFormulario, 
                 success: function(data) {
                     // Lógica de éxito después de modificar
-                    Swal.fire('Modificado', 'El curso ha sido modificado', 'success');
+                    Swal.fire('Modificado', 'El curso ha sido modificado', 'success').then(() => {
+                        
+                        location.reload();
+                    });
                 },
                 error: function(error) {
                     console.error('Error al modificar el curso:', error);
