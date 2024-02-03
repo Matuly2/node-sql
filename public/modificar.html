@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/scriptModificar.js"></script>
+    <link rel="stylesheet" href="css/styleIndex.css">
+    <title>Modificar Curso</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Cursos</a></li>
+            <li><a href="/centros">Centros</a></li>
+            <li><a href="/alumnos">Alumnos</a></li>
+            <li><a href="/graficos">Gráficos</a></li>
+            <li><a href="/modificar">Modificar Cursos</a></li>
+        </ul>
+    </nav>
+    <h1>Modificar Curso</h1>
+    
+    <form class="formulario-container">
+        <label class="formulario-label" for="curso">Curso:</label>
+        <select class="formulario-select" id="curso" name="curso" required onchange="habilitarCampos()">
+            <option value="" disabled selected>Elige un curso para modificar</option>
+        </select>
+
+        <label class="formulario-label" for="nombre">Nombre:</label>
+        <input class="formulario-input" type="text" id="nombre" name="nombre" required disabled>
+
+        <label class="formulario-label" for="lugar">Lugar:</label>
+        <input class="formulario-input" type="text" id="lugar" name="lugar" required disabled>
+
+        <label class="formulario-label" for="descripcion">Descripción:</label>
+        <textarea class="formulario-textarea" id="descripcion" name="descripcion" rows="4" required disabled></textarea>
+
+        <label class="formulario-label" for="nivel">Nivel:</label>
+        <select class="formulario-select" id="nivel" name="nivel" required disabled>
+            <option value="Principiante">Principiante</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+        </select>
+
+        <button class="formulario-button" id="enviarButton" type="button" onclick="modificar()" disabled>Enviar</button>
+    </form>
+        
+    </div>
+ 
+</body>
+</html>

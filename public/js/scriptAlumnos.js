@@ -19,8 +19,9 @@ $(document).ready(() => {
 
 function render(data) {
     const alumnoContainer = document.getElementById("alumnoContainer");
-    alumnoContainer.innerHTML = "";
-
+    if(alumnoContainer!=null){
+        alumnoContainer.innerHTML = "";
+    }
     data.forEach(alumno => {
         const card = document.createElement("div");
         card.classList.add("alumno-card");

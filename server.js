@@ -47,6 +47,11 @@ app.get('/graficos',(req,res)=>{
     res.setHeader('Content-type','text/html');
     res.send(contenido);
 });
+app.get('/modificar',(req,res)=>{
+    var contenido=fs.readFileSync('public/modificar.html');
+    res.setHeader('Content-type','text/html');
+    res.send(contenido);
+});
 
 
 
@@ -56,6 +61,7 @@ app.get("/cursosInfo", (req, res) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query(`SELECT
+        cu.idCurso AS idCurso,
         cu.nombre AS nombreCurso,
         cu.lugar AS ubicacionCurso,
         cu.nivel,
@@ -196,6 +202,53 @@ app.get("/borrarAlumno", (req, res) => {
            
         })
     })
+});
+app.get("/modificarCurso", (req, res) => {
+    console.log("Este es el alumno.nombrealumno que mando a la bdd: ", req.query);
+    let datos = req.query;
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error en la conexión a la base de datos:', err);
+            throw err;
+        }
+
+        console.log('connected as id ' + connection.threadId);
+
+        connection.beginTransaction((err) => {
+            if (err) {
+                console.error('Error al iniciar la transacción:', err);
+                throw err;
+            }
+            console.log('Valor de datos.nombre:', datos.nombre);
+            connection.query(
+                `UPDATE Cursos
+                SET nivel = '${datos.nivel}', descripcion = '${datos.descripcion}', lugar = '${datos.lugar}', nombre='${datos.nombre}'
+                WHERE nombre='${datos.curso}';`,
+                (err, rows) => {
+                    if (err) {
+                        return connection.rollback(() => {
+                            console.error('Error en la consulta SQL:', err);
+                            throw err;
+                        });
+                    }
+
+                    connection.commit((err) => {
+                        if (err) {
+                            return connection.rollback(() => {
+                                console.error('Error al hacer commit:', err);
+                                throw err;
+                            });
+                        }
+
+                        connection.release();
+                        console.log('Consulta exitosa. Filas afectadas:', rows.affectedRows);
+                        res.send(rows);
+                    });
+                }
+            );
+        });
+    });
 });
 
 
