@@ -42,7 +42,7 @@ nav a:hover {
     background-color: rgb(38, 193, 210);
 }
 
-/* Estilos para tarjetas de curso */
+
 .curso-container {
     display: flex;
     flex-wrap: wrap;
@@ -90,7 +90,7 @@ nav a:hover {
     color: #333;
 }
 
-/* Estilos para tarjetas de centro */
+
 .centro-container {
     display: flex;
     flex-wrap: wrap;
@@ -140,7 +140,7 @@ nav a:hover {
     color: #333;
 }
 
-/* Estilos para tarjetas de alumno */
+
 .alumno-container {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +219,7 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* Efecto hover para el botón */
+
 #generarGrafico:hover {
     background-color: #45a049;
 }

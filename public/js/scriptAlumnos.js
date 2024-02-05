@@ -75,19 +75,19 @@ function render(data) {
                     popup: 'custom-popup-class',
                 },
             }).then((result) => {
-                // Si se hace clic en "Eliminar"
+                
                 if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire({
                         title: '¿Estás seguro?',
                         text: 'Esta acción no se puede deshacer',
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#d33', // Color rojo
+                        confirmButtonColor: '#d33', 
                         cancelButtonColor: '#3085d6',
                         confirmButtonText: 'Sí, eliminar',
                         cancelButtonText: 'Cancelar',
                     }).then((result) => {
-                        // Si se confirma la eliminación
+                       
                         
                         if (result.isConfirmed) {
                             $.ajax({
@@ -109,7 +109,7 @@ function render(data) {
                                             console.error('Error al cargar los datos:', error);
                                         }
                                     });
-                                    // Aquí puedes realizar la lógica de eliminación
+                                    
                                     
                                     Swal.fire('Eliminado', 'El alumno ha sido eliminado', 'success');
                                 },
