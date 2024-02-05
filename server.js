@@ -8,7 +8,8 @@ const server = require('http').Server(app);
 
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(express.json());
 
@@ -183,12 +184,12 @@ app.get("/graficosInfo", (req, res) => {
         })
     })
 });
-app.get("/borrarAlumno", (req, res) => {
-    console.log("Este es el alumno.nombrealumno que mando ala bdd: ",req.query.idAlumno)
+app.delete("/borrarAlumno", (req, res) => {
+    console.log("Este es el alumno.nombrealumno que mando ala bdd: ",req.body.idAlumno)
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query(`DELETE FROM Alumnos WHERE idAlumno = '${req.query.idAlumno}'`
+        connection.query(`DELETE FROM Alumnos WHERE idAlumno = '${req.body.idAlumno}'`
      , (err, rows) => {
             connection.release() // return the connection to pool
 
@@ -203,9 +204,9 @@ app.get("/borrarAlumno", (req, res) => {
         })
     })
 });
-app.get("/modificarCurso", (req, res) => {
-    console.log("Este es el alumno.nombrealumno que mando a la bdd: ", req.query);
-    let datos = req.query;
+app.put("/modificarCurso", (req, res) => {
+    console.log("Este es el alumno.nombrealumno que mando a la bdd: ", req.body);
+    let datos = req.body;
 
     pool.getConnection((err, connection) => {
         if (err) {

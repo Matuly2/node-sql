@@ -87,9 +87,10 @@ function render(data) {
                         if (result.isConfirmed) {
                             $.ajax({
                                 url: '/borrarAlumno',
-                                type: 'GET', 
+                                type: 'DELETE', 
                                 dataType: 'json',
-                                data: { idAlumno: alumno.idAlumno }, 
+                                
+                                data:{ idAlumno: alumno.idAlumno }, 
                                 success: function(data) {
                                     $.ajax({
                                         url: '/alumnosInfo',

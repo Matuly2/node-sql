@@ -79,7 +79,7 @@ function modificar() {
             
             $.ajax({
                 url: '/modificarCurso',
-                type: 'GET', 
+                type: 'PUT', 
                 dataType: 'json',
                 data: valoresFormulario, 
                 success: function(data) {
