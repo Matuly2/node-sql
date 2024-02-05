@@ -138,7 +138,8 @@ function parseCursosMatriculados(cursosMatriculados) {
     let cursosHTML = "";
 
     cursosArray.forEach(curso => {
-        cursosHTML += `<p><strong>${curso.nombreCurso}:</strong> ${curso.estado}</p>`;
+        cursosHTML += `<p>📘 <strong>${curso.nombreCurso}:</strong> ${curso.estado === 'aprobado' ? '✅ Aprobado' : '❌ Suspenso'}</p>
+        `;
     });
 
     return cursosHTML;

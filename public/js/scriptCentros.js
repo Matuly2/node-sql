@@ -31,7 +31,7 @@ function render(data) {
 
         const info = document.createElement("div");
         info.classList.add("centro-info");
-        info.innerHTML = `<p><span><strong>ID:</span> </strong>${centro.idCentro}</p><p><span><strong>Cursos Impartidos:</strong></span> ${parseCursosImpartidos(centro.cursosImpartidos)}</p>`;
+        info.innerHTML = `<p>🆔<span><strong>ID:</span> </strong>${centro.idCentro}</p><p>📘<span><strong>Cursos Impartidos:</strong></span> ${parseCursosImpartidos(centro.cursosImpartidos)}</p>`;
 
         const name = document.createElement("div");
         name.classList.add("centro-name");

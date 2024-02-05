@@ -30,7 +30,7 @@ function render(data) {
 
         const info = document.createElement("div");
         info.classList.add("curso-info");
-        info.innerHTML = `<p><strong>Ubicación:</strong> ${curso.ubicacionCurso}</p><p><strong>Nivel:</strong> ${curso.nivel}</p><p><strong>Centros:</strong> ${parseCentrosImpartidos(curso.centrosImpartidos)}</p>`;
+        info.innerHTML = `<p>📍<strong>Ubicación:</strong> ${curso.ubicacionCurso}</p><p>📊<strong>Nivel:</strong> ${curso.nivel}</p><p>🏫<strong>Centros:</strong> ${parseCentrosImpartidos(curso.centrosImpartidos)}</p>`;
 
         const name = document.createElement("div");
         name.classList.add("curso-name");

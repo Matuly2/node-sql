@@ -55,6 +55,9 @@ function modificar() {
     const descripcionTextarea = document.getElementById('descripcion');
     const nivelSelect = document.getElementById('nivel');
     if(cursoSelect.value&&nombreInput.value&&lugarInput.value&&descripcionTextarea.value&&nivelSelect.value){
+        if(obtenerNumeroImagenSeleccionada()){
+
+        
     const valoresFormulario = {
         curso: cursoSelect.value,
         nombre: nombreInput.value,
@@ -99,6 +102,9 @@ function modificar() {
             });
         }
     });
+}else{
+    Swal.fire('Error', 'Seleccione una imagen.', 'error');
+}
 }else{
     Swal.fire('Error', 'Rellene todos los campos.', 'error');
 }
