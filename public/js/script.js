@@ -47,7 +47,7 @@ function render(data) {
         function showCourseDetails(curso) {
             Swal.fire({
                 title: curso.nombreCurso,
-                html: `<p><strong>Ubicación:</strong> ${curso.ubicacionCurso}</p><p><strong>Nivel:</strong> ${curso.nivel}</p><p><strong>Centros:</strong> ${parseCentrosImpartidos(curso.centrosImpartidos)}</p>`,
+                html: `<p>📍<strong>Ubicación:</strong> ${curso.ubicacionCurso}</p><p>📊<strong>Nivel:</strong> ${curso.nivel}</p><p>🏫<strong>Centros:</strong> ${parseCentrosImpartidos(curso.centrosImpartidos)}</p>`,
                 confirmButtonText: 'Cerrar',
                 customClass: {
                     popup: 'custom-popup-class',

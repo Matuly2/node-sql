@@ -317,6 +317,17 @@ nav a:hover {
     transform: scale(1.2); 
 }
 
+.curso-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.centro-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.alumno-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
 
 @media (max-width: 768px) {
