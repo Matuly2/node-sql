@@ -21,7 +21,12 @@ function render(data) {
         card.classList.add("centro-card");
 
         const img = document.createElement("img");
-        img.src = "../img/centro.jpg"; 
+        if(centro.img==null){
+            img.src = "../img/centros/centro.jpg"; 
+        }else{
+            img.src = `../img/centros/${centro.img}.png`; 
+        }
+        
         img.alt = centro.nombreCentro;
 
         const info = document.createElement("div");

@@ -30,7 +30,33 @@
 
         <label class="formulario-label" for="nombre">Nombre:</label>
         <input class="formulario-input" type="text" id="nombre" name="nombre" required disabled>
-
+       
+        <div class="imagenes-container">
+            <label class="formulario-label">Selecciona una imagen:</label>
+            <div class="imagenes-grid">
+                <div class="imagen-item" onclick="seleccionarImagen(1)">
+                    <img src="img/cursos/1.png" alt="Imagen 1" id="imagen1">
+                    <div class="check-mark" id="check1"></div>
+                </div>
+                <div class="imagen-item" onclick="seleccionarImagen(2)">
+                    <img src="img/cursos/2.png" alt="Imagen 2" id="imagen2">
+                    <div class="check-mark" id="check2"></div>
+                </div>
+                <div class="imagen-item" onclick="seleccionarImagen(3)">
+                    <img src="img/cursos/3.png" alt="Imagen 3" id="imagen3">
+                    <div class="check-mark" id="check3"></div>
+                </div>
+                <div class="imagen-item" onclick="seleccionarImagen(4)">
+                    <img src="img/cursos/4.png" alt="Imagen 4" id="imagen4">
+                    <div class="check-mark" id="check4"></div>
+                </div>
+                <div class="imagen-item" onclick="seleccionarImagen(5)">
+                    <img src="img/cursos/5.png" alt="Imagen 5" id="imagen5">
+                    <div class="check-mark" id="check5"></div>
+                </div>
+            </div>
+        </div>
+        
         <label class="formulario-label" for="lugar">Lugar:</label>
         <input class="formulario-input" type="text" id="lugar" name="lugar" required disabled>
 

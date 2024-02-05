@@ -4,7 +4,7 @@ $(document).ready(() => {
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            
+            console.log(data);
             render(data);
         },
         error: function(error) {
@@ -20,7 +20,12 @@ function render(data) {
         card.classList.add("curso-card");
 
         const img = document.createElement("img");
-        img.src = "../img/curso.jpg"; 
+        if(curso.img==null){
+            img.src = "../img/cursos/curso.jpg"; 
+        }else{
+            img.src = `../img/cursos/${curso.img}.png`; 
+        }
+        
         img.alt = curso.nombreCurso;
 
         const info = document.createElement("div");

@@ -60,7 +60,8 @@ function modificar() {
         nombre: nombreInput.value,
         lugar: lugarInput.value,
         descripcion: descripcionTextarea.value,
-        nivel: nivelSelect.value
+        nivel: nivelSelect.value,
+        numeroImagen: obtenerNumeroImagenSeleccionada()
     };
 
     
@@ -108,4 +109,35 @@ function borrarCampos(){
     document.getElementById('lugar').value="";
     document.getElementById('descripcion').value="";
     document.getElementById('nivel').value="";
+}
+
+
+let numeroImagenSeleccionada = null;
+
+function seleccionarImagen(numero) {
+    const checkMark = document.getElementById(`check${numero}`);
+    const imagenItem = document.querySelector(`.imagen-item:nth-child(${numero})`);
+
+    if (numeroImagenSeleccionada === numero) {
+        // Si la misma imagen ya está seleccionada, deselecciónala
+        numeroImagenSeleccionada = null;
+        checkMark.style.display = 'none';
+        imagenItem.classList.remove('selected');
+    } else {
+        // Desselecciona la imagen anterior
+        if (numeroImagenSeleccionada !== null) {
+            document.getElementById(`check${numeroImagenSeleccionada}`).style.display = 'none';
+            document.querySelector(`.imagen-item:nth-child(${numeroImagenSeleccionada})`).classList.remove('selected');
+        }
+
+        // Selecciona la nueva imagen
+        numeroImagenSeleccionada = numero;
+        checkMark.style.display = 'block';
+        imagenItem.classList.add('selected');
+    }
+}
+
+// Puedes acceder al número de la imagen seleccionada en la función modificar()
+function obtenerNumeroImagenSeleccionada() {
+    return numeroImagenSeleccionada;
 }

@@ -62,6 +62,7 @@ app.get("/cursosInfo", (req, res) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query(`SELECT
+        cu.img,
         cu.idCurso AS idCurso,
         cu.nombre AS nombreCurso,
         cu.lugar AS ubicacionCurso,
@@ -94,6 +95,7 @@ app.get("/centrosInfo", (req, res) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query(`SELECT
+        ce.img,
         ce.idCentro,
         ce.nombre AS nombreCentro,
         JSON_ARRAYAGG(cu.nombre) AS cursosImpartidos
@@ -124,6 +126,7 @@ app.get("/alumnosInfo", (req, res) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query(`SELECT
+        a.img,
         a.idAlumno,
         a.nombre AS nombreAlumno,
         JSON_ARRAYAGG(
@@ -224,8 +227,9 @@ app.put("/modificarCurso", (req, res) => {
             console.log('Valor de datos.nombre:', datos.nombre);
             connection.query(
                 `UPDATE Cursos
-                SET nivel = '${datos.nivel}', descripcion = '${datos.descripcion}', lugar = '${datos.lugar}', nombre='${datos.nombre}'
-                WHERE nombre='${datos.curso}';`,
+                SET nivel = '${datos.nivel}', descripcion = '${datos.descripcion}', lugar = '${datos.lugar}', nombre='${datos.nombre}', img = '${datos.numeroImagen}'
+                WHERE nombre='${datos.curso}';
+                `,
                 (err, rows) => {
                     if (err) {
                         return connection.rollback(() => {

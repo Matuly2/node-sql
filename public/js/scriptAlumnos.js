@@ -27,7 +27,12 @@ function render(data) {
         card.classList.add("alumno-card");
 
         const img = document.createElement("img");
-        img.src = "../img/alumno.png"; 
+        if(alumno.img==null){
+            img.src = "../img/avatares/alumno.png"; 
+        }else{
+            img.src = `../img/avatares/${alumno.img}.png`; 
+        }
+        
         img.alt = alumno.nombreAlumno;
 
         const name = document.createElement("div");
