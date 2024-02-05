@@ -14,7 +14,7 @@ $(document).ready(() => {
                 }));
             });
 
-            // Evento del botón para generar el gráfico
+            
             $('#generarGrafico').on('click', function () {
                 const cursoSeleccionado = cursosDropdown.val();
                 const datosCurso = data.find(curso => curso.idCurso == cursoSeleccionado);
@@ -31,14 +31,14 @@ $(document).ready(() => {
 });
 
 function renderizarGrafico(datosCurso) {
-    // Destruir el gráfico existente si hay uno
+    
     if (myPieChart) {
         myPieChart.destroy();
     }
 
     const ctxPie = document.getElementById('myPieChart').getContext('2d');
     myPieChart = new Chart(ctxPie, {
-        type: 'doughnut', // Usar 'doughnut' en lugar de 'pie' para un efecto de pastel cerrado
+        type: 'doughnut', 
         data: {
             labels: ['Aprobados', 'Suspensos'],
             datasets: [{
@@ -51,7 +51,7 @@ function renderizarGrafico(datosCurso) {
         options: {
             responsive: true,
             maintainAspectRatio: true,
-            cutout: '70%', // Agregar cutout para crear un efecto de pastel cerrado
+            cutout: '70%', 
             plugins: {
                 legend: {
                     display: true,

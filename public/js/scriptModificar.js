@@ -7,7 +7,7 @@ $(document).ready(() => {
         dataType: 'json',
         success: function(data) {
             cursos=data;
-            console.log(data);
+            
             renderCursos(data);
         },
         error: function(error) {

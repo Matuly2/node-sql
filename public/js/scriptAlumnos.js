@@ -8,7 +8,7 @@ $(document).ready(() => {
         success: function(data) {
             alumnos=data;
             render(data);
-            console.log(data)
+            
             
         },
         error: function(error) {
